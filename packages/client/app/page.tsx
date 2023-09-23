@@ -1,11 +1,24 @@
-import Button from '@client/components/button/Button';
-import ButtonXL from '@client/components/buttonXL/ButtonXL';
+import React from 'react';
 
-export default function Home() {
+const Home = () => {
+  const test = {
+    one: 1,
+    two: 2,
+  };
+
   return (
     <main>
-      <Button />
-      <ButtonXL />
+      <Btn className='mx-auto bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3'>
+        hello text...
+      </Btn>
     </main>
   );
-}
+};
+
+export default Home;
+
+const Btn: React.FC<BtnProps> = ({ children, ...rest }) => {
+  return <button {...rest}>{children}</button>;
+};
+
+type BtnProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
