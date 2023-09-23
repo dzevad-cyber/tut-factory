@@ -1,0 +1,17 @@
+{
+  "name": "tut-factory",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Dzevad Delihodzic <dzevad.del@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "client": "yarn workspace @tut-factory/client dev"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "typescript": "^5.2.2"
+  }
+}

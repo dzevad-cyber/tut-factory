@@ -1,0 +1,21 @@
+{
+  "exclude": ["packages/**/tests/**", "packages/**/dist/**", "node_moudules"],
+  "compilerOptions": {
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@client/*": ["packages/client/*"]
+    }
+  },
+  "references": [
+    {
+      "path": "./packages/client"
+    }
+    // {
+    //   "path": "./packages/server"
+    // },
+    // {
+    //   "path": "./packages/shared"
+    // }
+  ]
+}
