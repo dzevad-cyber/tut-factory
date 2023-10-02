@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  client:
+    container_name: tut-factory-client
+    build: .
+    volumes:
+      - /usr/tut-factory/node_modules
+      - .:/usr/tut-factory
+    ports:
+      - '3000:3000'
+    tty: true
