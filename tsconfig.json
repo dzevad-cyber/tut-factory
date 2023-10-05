@@ -1,5 +1,5 @@
 {
-  "exclude": ["packages/**/tests/**", "packages/**/dist/**", "node_moudules"],
+  "exclude": ["packages/**/tests/**", "packages/**/dist/**", "node_modules"],
   "compilerOptions": {
     "incremental": true,
     "baseUrl": ".",
