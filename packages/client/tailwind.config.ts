@@ -7,10 +7,6 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    sm: ['1.4rem', '20px'],
-    base: ['1.6rem', '24px'],
-    lg: ['2rem', '28px'],
-    xl: ['2.4rem', '32px'],
     extend: {
       colors: {
         background: 'var(--background)',
@@ -33,6 +29,12 @@ const config: Config = {
         'muted-foreground': 'var(muted-foreground)',
         'accent-foreground': 'var(accent-foreground)',
         'destructive-foreground': 'var(destructive-foreground)',
+      },
+      fontSize: {
+        sm: ['1.4rem', '20px'],
+        base: ['1.6rem', '24px'],
+        lg: ['2rem', '28px'],
+        xl: ['2.4rem', '32px'],
       },
     },
   },
