@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { ClerkProvider } from '@clerk/nextjs';
 import { Inter } from 'next/font/google';
 import React from 'react';
+import { cn } from '@client/client-utils/tailwind/cn';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,7 +16,14 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
     <ClerkProvider>
       <html lang='en'>
-        <body className={inter.className}>{children}</body>
+        <body
+          className={cn(
+            'leading-base bg-background text-foreground box-border min-h-screen w-full text-base',
+            inter.className
+          )}
+        >
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );
