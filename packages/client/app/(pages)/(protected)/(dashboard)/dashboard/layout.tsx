@@ -4,7 +4,7 @@ import DashboardSidebar from './dashboard-components/dashboard-sidebar/Dashboard
 
 const DashboardLayout: React.FC<DashboardLayout> = ({ children }) => {
   return (
-    <div className='grid min-h-screen grid-rows-[auto_1fr] bg-slate-400 md:grid-cols-[minmax(150px,25%)_1fr] md:grid-rows-[auto_1fr]'>
+    <div className='bg-background grid min-h-screen grid-rows-[auto_1fr] md:grid-cols-[minmax(150px,25%)_1fr] md:grid-rows-[auto_1fr]'>
       <DashboardHeader />
       <DashboardSidebar />
       <DashboardContent>{children}</DashboardContent>
