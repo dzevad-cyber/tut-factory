@@ -1,43 +1,85 @@
-import type { Config } from 'tailwindcss';
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: ['class'],
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
   ],
   theme: {
+    container: {
+      center: true,
+      padding: '2rem',
+      screens: {
+        '2xl': '1400px',
+      },
+    },
     extend: {
       colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
-        card: 'var(--card)',
-        popover: 'var(--popover)',
-        primary: 'var(--primary)',
-        secondary: 'var(--secondary)',
-        muted: 'var(--muted)',
-        accent: 'var(--accent)',
-        destructive: 'var(--destructive)',
         border: 'var(--border)',
         input: 'var(--input)',
         ring: 'var(--ring)',
-        radius: 'var(--radius)',
-        'card-foreground': 'var(card-foreground)',
-        'popover-foreground': 'var(popover-foreground)',
-        'primary-foreground': 'var(primary-foreground)',
-        'secondary-foreground': 'var(secondary-foreground)',
-        'muted-foreground': 'var(muted-foreground)',
-        'accent-foreground': 'var(accent-foreground)',
-        'destructive-foreground': 'var(destructive-foreground)',
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        primary: {
+          DEFAULT: 'var(--primary)',
+          foreground: 'var(--primary-foreground)',
+        },
+        secondary: {
+          DEFAULT: 'var(--secondary)',
+          foreground: 'var(--secondary-foreground)',
+        },
+        destructive: {
+          DEFAULT: 'var(--destructive)',
+          foreground: 'var(--destructive-foreground)',
+        },
+        muted: {
+          DEFAULT: 'var(--muted)',
+          foreground: 'var(--muted-foreground)',
+        },
+        accent: {
+          DEFAULT: 'var(--accent)',
+          foreground: 'var(--accent-foreground)',
+        },
+        popover: {
+          DEFAULT: 'var(--popover)',
+          foreground: 'var(--popover-foreground)',
+        },
+        card: {
+          DEFAULT: 'var(--card)',
+          foreground: 'var(--card-foreground)',
+        },
+      },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
+      },
+      keyframes: {
+        'accordion-down': {
+          from: { height: 0 },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
       },
       fontSize: {
-        sm: ['1.4rem', '20px'],
-        base: ['1.6rem', '24px'],
-        lg: ['2rem', '28px'],
-        xl: ['2.4rem', '32px'],
+        sm: ['1.4rem', '1.6'],
+        base: ['1.6rem', '1.6'],
+        lg: ['2rem', '1.6'],
+        xl: ['2.4rem', '1.6'],
+      },
+      lineHeight: {
+        base: '1.6',
       },
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-animate')],
 };
-export default config;

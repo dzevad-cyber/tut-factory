@@ -3,6 +3,15 @@
 @tailwind utilities;
 
 @layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer base {
   :root {
     --background: hsl(0, 0%, 100%);
     --foreground: hsl(20, 14.3%, 4.1%);
@@ -62,12 +71,7 @@ html {
 }
 
 body {
-  box-sizing: border-box;
-  line-height: 1.6;
   text-rendering: optimizeSpeed;
-  width: 100%;
-  min-height: 100vh;
-  font-size: 1.6rem;
 }
 
 ul,
