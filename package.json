@@ -26,6 +26,7 @@
     "prettier": "^3.0.3"
   },
   "engines": {
-    "node": "20.x.x"
+    "node": "20.x.x",
+    "yarn": "1.22.19"
   }
 }
