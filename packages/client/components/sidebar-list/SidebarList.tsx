@@ -42,7 +42,8 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
           'grid-flow-col',
           'justify-start',
           'w-full',
-          'gap-x-3'
+          'gap-x-3',
+          'p-0'
         )}
         variant='ghost'
         asChild
