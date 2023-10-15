@@ -28,7 +28,7 @@ const DashboardHeader = () => {
 
       {/* nav menu */}
       <div className={cn('grid', 'grid-flow-col', 'justify-self-end')}>
-        <UserButton />
+        <UserButton afterSignOutUrl='/' />
       </div>
     </div>
   );
