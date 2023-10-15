@@ -3,6 +3,10 @@ import { Menu } from 'lucide-react';
 import DashboardSidebar from '../dashboard-sidebar/DashboardSidebar';
 import { cn } from '@client/client-utils/tailwind/cn';
 import { UserButton } from '@clerk/nextjs';
+import { Button } from '@client/components/ui/button';
+import Link from 'next/link';
+import pageRoutes from '@client/client-utils/page-routes/pagesRoutes';
+import TeacherModeButton from '@client/components/teacher-mode-button/TeacherModeButton';
 
 const DashboardHeader = () => {
   return (
@@ -26,8 +30,16 @@ const DashboardHeader = () => {
         </Sheet>
       </div>
 
-      {/* nav menu */}
-      <div className={cn('grid', 'grid-flow-col', 'justify-self-end')}>
+      <div
+        className={cn(
+          'grid',
+          'grid-flow-col',
+          'justify-self-end',
+          'items-center',
+          'gap-x-5'
+        )}
+      >
+        <TeacherModeButton />
         <UserButton
           afterSignOutUrl='/'
           appearance={{
