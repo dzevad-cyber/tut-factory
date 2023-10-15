@@ -13,7 +13,7 @@ const DashboardSidebar = () => {
         'auto-rows-min',
         'min-h-full',
         'bg-background',
-        'border-border border-r-2'
+        'border-border border-r'
       )}
     >
       <Logo />

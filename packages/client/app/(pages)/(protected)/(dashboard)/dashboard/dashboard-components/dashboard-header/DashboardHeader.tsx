@@ -12,7 +12,7 @@ const DashboardHeader = () => {
         'grid grid-flow-col',
         'md:col-start-2',
         'bg-background',
-        'border-border border-b-2'
+        'border-border border-b'
       )}
     >
       <div className={cn('grid', 'md:hidden')}>
