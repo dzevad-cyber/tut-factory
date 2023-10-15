@@ -1,9 +1,9 @@
-import { UserButton } from '@clerk/nextjs';
+import ClerkUserButton from '@client/components/clerk-user-button/ClerkUserButton';
 
-const Home: React.FC<unknown> = () => {
+const Home = () => {
   return (
     <>
-      <UserButton afterSignOutUrl='/' />
+      <ClerkUserButton />
     </>
   );
 };
