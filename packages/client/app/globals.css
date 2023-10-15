@@ -86,9 +86,3 @@ picture {
 a {
   text-decoration: none;
 }
-
-// ---------- Clerk components styles ----------
-.cl-avatarBox, .cl-userButtonAvatarBox: {
-  width: 4rem;
-  height: 4rem;
-}
