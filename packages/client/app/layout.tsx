@@ -18,7 +18,10 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
       <html lang='en'>
         <body
           className={cn(
-            'leading-base bg-background text-foreground box-border min-h-screen w-full text-base',
+            'leading-base',
+            'text-foreground bg-background',
+            'box-border min-h-screen w-full',
+            'text-base',
             inter.className
           )}
         >

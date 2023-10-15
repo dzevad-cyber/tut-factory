@@ -1,14 +1,33 @@
+import { cn } from '@client/client-utils/tailwind/cn';
 import Logo from '@client/components/logo/Logo';
 import { Button } from '@client/components/ui/button';
 import { Compass, Layout, LucideIcon } from 'lucide-react';
 import Link from 'next/link';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 const DashboardSidebar = () => {
   return (
-    <div className='bg-muted hidden auto-rows-min pl-5 pt-5 md:col-start-1 md:col-end-2 md:row-span-full md:grid md:min-h-screen md:gap-y-10'>
+    <div
+      className={cn(
+        'grid gap-y-5',
+        'auto-rows-min',
+        'min-h-full',
+        'bg-background',
+        'border-border border-r-2'
+      )}
+    >
       <Logo />
       <SidebarList />
+    </div>
+  );
+};
+
+export const DashboardSiebarWrapper: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
+  return (
+    <div className={cn('hidden md:grid', 'md:col-[1_/_2] md:row-span-full')}>
+      {children}
     </div>
   );
 };
@@ -17,7 +36,7 @@ export default DashboardSidebar;
 
 const SidebarList = () => {
   return (
-    <ul className='grid gap-y-3 text-sm'>
+    <ul className={cn('pl-base grid gap-y-3 text-sm')}>
       {sidebarItems.map(({ icon: Icon, label, href, selected }) => {
         return (
           <SidebarItem
@@ -42,7 +61,15 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   return (
     <li>
       <Button
-        className='grid w-full grid-flow-col grid-cols-[min-content_min-content_1fr] justify-start gap-x-3 p-0'
+        className={cn(
+          'grid',
+          'grid-cols-[min-content_min-content_1fr]',
+          'grid-flow-col',
+          'justify-start',
+          'w-full',
+          'gap-x-3',
+          'p-0'
+        )}
         variant='ghost'
         asChild
       >
@@ -50,7 +77,15 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
           <Icon size={14} />
           {label}
           {selected ? (
-            <span className='min-h-full w-2 self-end justify-self-end bg-blue-500' />
+            <span
+              className={cn(
+                'min-h-full',
+                'w-2',
+                'self-end',
+                'justify-self-end',
+                'bg-primary'
+              )}
+            />
           ) : null}
         </Link>
       </Button>
