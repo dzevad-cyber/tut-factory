@@ -79,6 +79,9 @@ module.exports = {
       lineHeight: {
         base: '1.6',
       },
+      spacing: {
+        base: '0.75rem',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],

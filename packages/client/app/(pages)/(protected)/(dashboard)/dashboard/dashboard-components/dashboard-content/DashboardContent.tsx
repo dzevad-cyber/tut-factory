@@ -1,9 +1,7 @@
+import { cn } from '@client/client-utils/tailwind/cn';
+
 const DashboardContent: React.FC<ContentProps> = ({ children }) => {
-  return (
-    <main className='md:col-start-2 md:col-end-3 md:row-start-2'>
-      {children}
-    </main>
-  );
+  return <main className={cn('bg-background', 'p-base')}>{children}</main>;
 };
 
 export default DashboardContent;
