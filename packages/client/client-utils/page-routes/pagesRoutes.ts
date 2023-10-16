@@ -12,6 +12,9 @@ const pagesRoutes = {
     analytics: {
       path: '/teacher/analytics',
     },
+    create: {
+      path: '/teacher/create',
+    },
   },
 } as const;
 
