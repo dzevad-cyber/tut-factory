@@ -1,11 +1,11 @@
-dev:
+du:
 	docker-compose -f docker-compose.dev.yml up
 
-devd:
+dd:
 	docker-compose -f docker-compose.dev.yml down -v
 
-devb: 
+db: 
 	docker image rm -f tut-factory-client && docker-compose -f docker-compose.dev.yml up --build
 
-imgrm: 
+drm: 
 	docker image rm -f tut-factory-client
