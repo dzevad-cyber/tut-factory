@@ -11,7 +11,7 @@ const SidebarList = () => {
   const { routes } = useSidebarRoutes();
 
   return (
-    <ul className={cn('pl-base grid gap-y-3 text-sm')}>
+    <ul className={cn('grid', 'text-sm')}>
       {routes.map(({ icon: Icon, label, href, selected }) => {
         return (
           <SidebarItem
@@ -43,7 +43,9 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
           'justify-start',
           'w-full',
           'gap-x-3',
-          'p-0'
+          'p-0',
+          'pl-10',
+          'h-16'
         )}
         variant='ghost'
         asChild

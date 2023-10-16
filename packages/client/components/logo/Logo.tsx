@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import { cn } from '@client/client-utils/tailwind/cn';
+import Link from 'next/link';
 
-const Logo: React.FC<unknown> = () => {
+const Logo = () => {
   return (
-    <div className={cn('pt-base pl-base')}>
+    <Link href='/' className={cn('grid', 'items-center', 'pl-10', 'h-24')}>
       <Image
         style={{ width: '100px' }}
         width={100}
@@ -11,7 +12,7 @@ const Logo: React.FC<unknown> = () => {
         alt='logo'
         src='/logo.svg'
       />
-    </div>
+    </Link>
   );
 };
 
