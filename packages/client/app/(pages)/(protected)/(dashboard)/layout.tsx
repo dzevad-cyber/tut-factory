@@ -9,11 +9,10 @@ const DashboardLayout: React.FC<DashboardLayout> = ({ children }) => {
   return (
     <div
       className={cn(
-        'bg-slate-300',
         'grid',
         'min-h-screen',
         'grid-rows-[auto_1fr]',
-        'md:grid-cols-[minmax(150px,25%)_1fr]'
+        'md:grid-cols-[minmax(150px,15%)_1fr]'
       )}
     >
       <DashboardHeader />

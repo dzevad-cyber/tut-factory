@@ -14,16 +14,16 @@ const TeacherModeButton: React.FC<unknown> = () => {
   return (
     <>
       {!isTeacherPage ? (
-        <Button>
+        <Button variant='outline'>
           <Link href={pagesRoutes.teacher.courses.path}>Teacher mode</Link>
         </Button>
       ) : (
-        <Button variant='ghost'>
+        <Button variant='outline'>
           <Link
             href={pagesRoutes.dashboard.path}
-            className={cn('grid', 'grid-flow-col', 'gap-x-3')}
+            className={cn('grid', 'grid-flow-col', 'gap-x-3', 'items-center')}
           >
-            <LogOut />
+            <LogOut size='15' />
             <span>Exit</span>
           </Link>
         </Button>

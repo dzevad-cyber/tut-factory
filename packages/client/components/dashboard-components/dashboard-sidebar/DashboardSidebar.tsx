@@ -7,7 +7,7 @@ const DashboardSidebar = () => {
   return (
     <div
       className={cn(
-        'grid gap-y-5',
+        'grid',
         'auto-rows-min',
         'min-h-full',
         'bg-background',
@@ -24,7 +24,9 @@ export const DashboardSiebarWrapper: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   return (
-    <div className={cn('hidden md:grid', 'md:col-[1_/_2] md:row-span-full')}>
+    <div
+      className={cn('hidden', 'md:grid', 'md:col-[1_/_2]', 'md:row-span-full')}
+    >
       {children}
     </div>
   );

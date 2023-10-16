@@ -9,11 +9,12 @@ const DashboardHeader = () => {
   return (
     <div
       className={cn(
-        'p-base',
         'grid grid-flow-col',
         'md:col-start-2',
         'bg-background',
-        'border-border border-b'
+        'border-border border-b',
+        'h-24',
+        'pr-10'
       )}
     >
       <div className={cn('grid', 'md:hidden')}>
