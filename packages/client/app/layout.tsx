@@ -4,6 +4,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 import { Inter } from 'next/font/google';
 import React from 'react';
 import { cn } from '@client/client-utils/tailwind/cn';
+import ReactQueryClientProvider from '@client/components/client-components/react-query/ReactQueryClientProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -25,7 +26,7 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
             inter.className
           )}
         >
-          {children}
+          <ReactQueryClientProvider>{children}</ReactQueryClientProvider>
         </body>
       </html>
     </ClerkProvider>
