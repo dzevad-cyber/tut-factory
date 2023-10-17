@@ -2,7 +2,7 @@ import pagesRoutes from '@client/client-utils/page-routes/pagesRoutes';
 import { Button } from '@client/components/ui/button';
 import Link from 'next/link';
 
-const TeacherCourses: React.FC<unknown> = () => {
+const TeacherCourses = () => {
   return (
     <div>
       <Button>
