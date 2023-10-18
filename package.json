@@ -6,7 +6,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "client": "yarn workspace @tut-factory/client dev"
+    "client": "yarn workspace @tut-factory/client dev",
+    "server": "yarn workspace @tut-factory/server dev",
+    "dev": "yarn server & yarn client"
   },
   "workspaces": [
     "packages/*"

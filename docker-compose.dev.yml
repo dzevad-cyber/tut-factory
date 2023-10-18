@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   client:
-    container_name: tut-factory-client
+    container_name: tut-factory-client-container
     build:
       context: .
       dockerfile: ./Dockerfile.dev
@@ -12,5 +12,6 @@ services:
       - NODE_ENV=development
     ports:
       - '3000:3000'
+      - '5000:5000'
     tty: true
     stdin_open: true

@@ -1,5 +1,4 @@
 {
-  "exclude": ["packages/**/tests/**", "packages/**/dist/**", "node_modules"],
   "compilerOptions": {
     "incremental": true,
     "baseUrl": ".",
@@ -19,5 +18,11 @@
     // {
     //   "path": "./packages/shared"
     // }
+  ],
+  "exclude": [
+    "packages/**/tests/**",
+    "packages/**/dist/**",
+    "**/.*/",
+    "**/node_modules"
   ]
 }
