@@ -1,6 +1,6 @@
 import CreateCourseForm from '@client/components/client-components/create-course-form/CreateCourseForm';
 
-const Create: React.FC<unknown> = () => {
+const Create = () => {
   return (
     <div>
       <CreateCourseForm />

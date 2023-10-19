@@ -5,8 +5,8 @@ import Link from 'next/link';
 const TeacherCourses = () => {
   return (
     <div>
-      <Button>
-        <Link href={pagesRoutes.teacher.create.path}>Create</Link>
+      <Button size='lg'>
+        <Link href={pagesRoutes.teacher.create.path}>Create New Course</Link>
       </Button>
     </div>
   );

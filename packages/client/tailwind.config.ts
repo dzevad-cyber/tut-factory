@@ -79,9 +79,11 @@ module.exports = {
       },
       lineHeight: {
         base: '1.6',
+        text: '1.5',
       },
       spacing: {
         base: '0.75rem',
+        content: '1.75rem',
       },
     },
   },
