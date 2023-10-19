@@ -1,15 +1,22 @@
 {
   "compilerOptions": {
-    "composite": true,
-    "module": "NodeNext",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "es6",
-    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "target": "ES2022",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
     "moduleResolution": "NodeNext",
-    "sourceMap": true,
+    "module": "NodeNext",
     "outDir": "dist",
-    "noEmit": true
+    "sourceMap": true,
+    "lib": ["es2022"],
+    "isolatedModules": true
   },
-  "include": ["app/**/*"]
+  "include": ["app/**/*"],
+  "ts-node": {
+    "swc": true
+  }
 }
