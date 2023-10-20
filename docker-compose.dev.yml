@@ -1,17 +1,29 @@
 version: '3.8'
 
 services:
-  client:
-    container_name: tut-factory-client-container
+  fullstack:
+    container_name: tut-factory-fullstack-container
     build:
       context: .
       dockerfile: ./Dockerfile.dev
     volumes:
       - .:/usr/tut-factory
     environment:
-      - NODE_ENV=development
+      NODE_ENV: development
     ports:
       - '3000:3000'
       - '5000:5000'
     tty: true
     stdin_open: true
+  mysql-db:
+    container_name: tut-factory-db-container
+    image: mysql:8.1.0
+    restart: always
+    env_file: .env.db.dev
+    volumes:
+      - mysql:/docker-entrypoint-initdb.d
+    ports:
+      - '3306:3306'
+
+volumes:
+  mysql:
