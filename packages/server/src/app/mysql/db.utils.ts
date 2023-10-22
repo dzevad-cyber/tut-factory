@@ -1,7 +1,8 @@
 import { Sequelize } from 'sequelize';
+import sequelize from './db.create';
 
-export const dbConnect = (sequelize: Sequelize) => {
-  if (process.env.NODE_ENV === 'development') {
+const dbConnectInit = (sequelize: Sequelize) => {
+  return () => {
     sequelize
       .authenticate()
       .then(() => {
@@ -10,18 +11,21 @@ export const dbConnect = (sequelize: Sequelize) => {
       .catch((error) => {
         console.error('Unable to connect to the database:', error);
       });
-  } else {
-    console.log('Invalid environment.', process.env.NODE_ENV);
-  }
+  };
 };
 
-export const syncModels = (sequelize: Sequelize) => {
-  sequelize
-    .sync()
-    .then(() => {
-      console.log('All models were synchronized successfully.');
-    })
-    .catch((err) => {
-      console.log('Unable to sync models:', err);
-    });
+const syncModelsInit = (sequelize: Sequelize) => {
+  return () => {
+    sequelize
+      .sync()
+      .then(() => {
+        console.log('All models were synchronized successfully.');
+      })
+      .catch((err) => {
+        console.log('Unable to sync models:', err);
+      });
+  };
 };
+
+export const dbConnect = dbConnectInit(sequelize);
+export const syncModels = syncModelsInit(sequelize);

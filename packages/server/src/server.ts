@@ -1,9 +1,8 @@
 console.time('Server startup time');
 import app from './app/app';
-import sequelize from './app/mysql/db.create';
 import dbSetup from './app/mysql/db.setup';
 
-dbSetup(sequelize);
+dbSetup();
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
