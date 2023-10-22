@@ -8,6 +8,7 @@ services:
       dockerfile: ./Dockerfile.dev
     volumes:
       - .:/usr/tut-factory
+    env_file: .env.db.dev
     environment:
       NODE_ENV: development
     ports:
@@ -32,7 +33,7 @@ services:
       interval: 5s
       timeout: 10s
       retries: 3
-      start_period: 1s
+      start_period: 2s
 
 volumes:
   mysql:
