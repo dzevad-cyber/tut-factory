@@ -14,7 +14,7 @@ const DashboardHeader = () => {
         'bg-background',
         'border-border border-b',
         'h-24',
-        'pr-10'
+        'px-10'
       )}
     >
       <div className={cn('grid', 'md:hidden')}>
