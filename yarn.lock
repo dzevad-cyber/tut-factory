@@ -2820,7 +2820,7 @@ next@13.5.2:
     postcss "8.4.31"
     styled-jsx "5.1.1"
     watchpack "2.4.0"
-    zod "3.21.4"
+    zod "3.22.3"
   optionalDependencies:
     "@next/swc-darwin-arm64" "13.5.2"
     "@next/swc-darwin-x64" "13.5.2"
