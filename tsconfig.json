@@ -4,7 +4,8 @@
     "baseUrl": ".",
     "paths": {
       "@client/*": ["packages/client/*"],
-      "@server/*": ["packages/server/*"]
+      "@server/*": ["packages/server/*"],
+      "@shared/*": ["packages/shared/*"]
     },
     "noUnusedParameters": true,
     "noUnusedLocals": true
@@ -15,10 +16,10 @@
     },
     {
       "path": "./packages/server"
+    },
+    {
+      "path": "./packages/shared"
     }
-    // {
-    //   "path": "./packages/shared"
-    // }
   ],
   "exclude": [
     "packages/**/tests/**",
