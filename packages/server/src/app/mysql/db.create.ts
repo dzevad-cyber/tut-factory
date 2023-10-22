@@ -1,7 +1,7 @@
 import { Dialect, Sequelize } from 'sequelize';
 
-const getDatabase = (environment: string | undefined): Sequelize => {
-  if (environment === 'development') {
+const getDatabase = (environment: string | undefined) => {
+  if (environment === 'production') {
     const sequelize = new Sequelize(
       process.env.MYSQL_DATABASE!,
       process.env.MYSQL_USER!,
@@ -14,7 +14,7 @@ const getDatabase = (environment: string | undefined): Sequelize => {
     );
 
     return sequelize;
-  } else if (environment === 'production') {
+  } else if (environment === 'test') {
     const sequelize = new Sequelize(
       process.env.MYSQL_DATABASE!,
       process.env.MYSQL_USER!,
@@ -28,6 +28,7 @@ const getDatabase = (environment: string | undefined): Sequelize => {
 
     return sequelize;
   } else {
+    //  development
     const sequelize = new Sequelize(
       process.env.MYSQL_DATABASE!,
       process.env.MYSQL_USER!,
