@@ -3,7 +3,8 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@client/*": ["packages/client/*"]
+      "@client/*": ["packages/client/*"],
+      "@server/*": ["packages/server/*"]
     },
     "noUnusedParameters": true,
     "noUnusedLocals": true

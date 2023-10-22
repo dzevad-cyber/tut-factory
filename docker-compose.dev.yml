@@ -1,8 +1,8 @@
 version: '3.8'
 
 services:
-  fullstack:
-    container_name: tut-factory-fullstack-container
+  tut_factory:
+    container_name: tut-factory-container
     build:
       context: .
       dockerfile: ./Dockerfile.dev
@@ -15,15 +15,24 @@ services:
       - '5000:5000'
     tty: true
     stdin_open: true
-  mysql-db:
+    depends_on:
+      tut_factory_db:
+        condition: service_healthy
+        restart: true
+
+  tut_factory_db:
     container_name: tut-factory-db-container
     image: mysql:8.1.0
     restart: always
     env_file: .env.db.dev
-    volumes:
-      - mysql:/docker-entrypoint-initdb.d
     ports:
       - '3306:3306'
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:3306']
+      interval: 5s
+      timeout: 10s
+      retries: 3
+      start_period: 1s
 
 volumes:
   mysql:
