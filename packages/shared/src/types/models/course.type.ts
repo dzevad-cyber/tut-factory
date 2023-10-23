@@ -4,7 +4,7 @@ type Course = {
   // category_id: number;
   title: string;
   description: string;
-  image_url: string;
+  imageUrl: string;
   price: number;
   isPublished: boolean;
 };

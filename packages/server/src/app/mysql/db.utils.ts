@@ -17,7 +17,7 @@ const dbConnectInit = (sequelize: Sequelize) => {
 const syncModelsInit = (sequelize: Sequelize) => {
   return () => {
     sequelize
-      .sync()
+      .sync({ force: true })
       .then(() => {
         console.log('All models were synchronized successfully.');
       })
