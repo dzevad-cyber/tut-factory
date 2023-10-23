@@ -1,9 +1,9 @@
 import { cn } from '@client/client-utils/tailwind/cn';
-import DashboardContent from '@client/components/dashboard-components/dashboard-content/DashboardContent';
-import DashboardHeader from '@client/components/dashboard-components/dashboard-header/DashboardHeader';
+import DashboardContent from '@client/components/dashboard/content/DashboardContent';
+import DashboardHeader from '@client/components/dashboard/header/DashboardHeader';
 import DashboardSidebar, {
   DashboardSiebarWrapper,
-} from '@client/components/dashboard-components/dashboard-sidebar/DashboardSidebar';
+} from '@client/components/dashboard/sidebar/DashboardSidebar';
 
 const DashboardLayout: React.FC<DashboardLayout> = ({ children }) => {
   return (
