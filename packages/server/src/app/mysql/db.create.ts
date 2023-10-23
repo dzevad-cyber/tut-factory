@@ -37,6 +37,12 @@ const getDatabase = (environment: string | undefined) => {
         host: process.env.MYSQL_HOST,
         dialect: process.env.DB_DIALECT as Dialect,
         logging: false,
+        pool: {
+          max: 5,
+          min: 0,
+          acquire: 30000,
+          idle: 10000,
+        },
       }
     );
 
