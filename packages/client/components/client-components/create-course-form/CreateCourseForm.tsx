@@ -44,14 +44,21 @@ const CreateCourseForm: React.FC<unknown> = () => {
                 </Label>
               </div>
             </div>
-            <CardFooter className='flex justify-between'>
+            <div
+              className={cn(
+                'grid',
+                'grid-flow-col',
+                'justify-between',
+                'pt-10'
+              )}
+            >
               <Button size='lg' variant='outline'>
                 Cancel
               </Button>
               <Button type='submit' size='lg'>
                 Continue
               </Button>
-            </CardFooter>
+            </div>
           </form>
         </CardContent>
       </Card>
