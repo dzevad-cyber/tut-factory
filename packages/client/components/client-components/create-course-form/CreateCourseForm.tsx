@@ -6,7 +6,6 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-  CardFooter,
 } from '@client/components/ui/card';
 import { cn } from '@client/client-utils/tailwind/cn';
 import { Label } from '@client/components/ui/label';
