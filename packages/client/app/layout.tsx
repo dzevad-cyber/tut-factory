@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google';
 import React from 'react';
 import { cn } from '@client/client-utils/tailwind/cn';
 import ReactQueryClientProvider from '@client/components/client-components/react-query/ReactQueryClientProvider';
+import ThemeProvider from '@client/components/client-components/theme-provider/ThemeProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,21 +16,26 @@ export const metadata: Metadata = {
 
 const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
-    <ClerkProvider>
-      <html lang='en'>
-        <body
-          className={cn(
-            'leading-base',
-            'text-foreground bg-background',
-            'box-border min-h-screen w-full',
-            'text-base',
-            inter.className
-          )}
+    <html lang='en'>
+      <body
+        className={cn(
+          'leading-base',
+          'text-foreground bg-background',
+          'box-border min-h-screen w-full',
+          'text-base',
+          inter.className
+        )}
+      >
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
         >
           <ReactQueryClientProvider>{children}</ReactQueryClientProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+        </ThemeProvider>
+      </body>
+    </html>
   );
 };
 

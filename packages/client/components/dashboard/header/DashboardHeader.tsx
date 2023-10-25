@@ -37,7 +37,6 @@ const DashboardHeader = () => {
         )}
       >
         <TeacherModeButton />
-        <ClerkUserButton />
       </div>
     </div>
   );
