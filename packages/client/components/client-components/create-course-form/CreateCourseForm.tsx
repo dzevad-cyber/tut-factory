@@ -25,7 +25,12 @@ const CreateCourseForm: React.FC<unknown> = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              console.log('test');
+            }}
+          >
             <div className='grid w-full items-center gap-4'>
               <div className='flex flex-col space-y-1.5'>
                 <Label htmlFor='name'>Course Name</Label>
@@ -39,14 +44,16 @@ const CreateCourseForm: React.FC<unknown> = () => {
                 </Label>
               </div>
             </div>
+            <CardFooter className='flex justify-between'>
+              <Button size='lg' variant='outline'>
+                Cancel
+              </Button>
+              <Button type='submit' size='lg'>
+                Continue
+              </Button>
+            </CardFooter>
           </form>
         </CardContent>
-        <CardFooter className='flex justify-between'>
-          <Button size='lg' variant='outline'>
-            Cancel
-          </Button>
-          <Button size='lg'>Continue</Button>
-        </CardFooter>
       </Card>
     </div>
   );
