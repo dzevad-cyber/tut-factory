@@ -11,7 +11,7 @@ const SidebarList = () => {
   const { routes } = useSidebarRoutes();
 
   return (
-    <ul className={cn('grid', 'text-sm')}>
+    <ul className={cn('grid', 'text-sm', 'auto-rows-min')}>
       {routes.map(({ icon: Icon, label, href, selected }) => {
         return (
           <SidebarItem
