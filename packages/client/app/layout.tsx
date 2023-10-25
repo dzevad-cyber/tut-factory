@@ -1,6 +1,5 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { ClerkProvider } from '@clerk/nextjs';
 import { Inter } from 'next/font/google';
 import React from 'react';
 import { cn } from '@client/client-utils/tailwind/cn';
