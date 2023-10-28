@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import { cn } from '@client/client-utils/tailwind/cn';
 import Link from 'next/link';
+import React from 'react';
 
-const Logo = () => {
+const Logo: React.FC<LogoProps> = ({ className }) => {
   return (
-    <Link href='/' className={cn('grid', 'items-center', 'pl-10', 'h-24')}>
+    <Link href='/' className={cn('grid', 'items-center', 'h-24', className)}>
       <Image
         style={{ width: '100px' }}
         width={100}
@@ -17,3 +18,7 @@ const Logo = () => {
 };
 
 export default Logo;
+
+type LogoProps = {
+  className?: string;
+};
