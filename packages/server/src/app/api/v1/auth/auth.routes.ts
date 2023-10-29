@@ -1,4 +1,3 @@
-import { createUser } from '@server/src/app/controllers/user/user.controller';
 import express from 'express';
 import * as userController from '../../../controllers/user/user.controller';
 
