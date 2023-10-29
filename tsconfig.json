@@ -7,7 +7,6 @@
       "@server/*": ["packages/server/*"],
       "@shared/*": ["packages/shared/*"]
     },
-    "noUnusedParameters": true,
     "noUnusedLocals": true
   },
   "references": [
