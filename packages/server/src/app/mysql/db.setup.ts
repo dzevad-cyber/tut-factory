@@ -1,5 +1,5 @@
 import { dbConnect, syncModels } from './db.utils';
-import '../models/course.model';
+import '../models/user.model';
 
 const dbSetup = () => {
   dbConnect();
