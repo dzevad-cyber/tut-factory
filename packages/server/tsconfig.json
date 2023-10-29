@@ -17,9 +17,7 @@
     "lib": ["es2022"],
     "isolatedModules": true,
     "noEmit": true,
-    "rootDir": "src",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "rootDir": "src"
   },
   "references": [
     {

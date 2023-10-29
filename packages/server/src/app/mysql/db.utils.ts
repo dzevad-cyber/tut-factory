@@ -6,10 +6,10 @@ const dbConnectInit = (sequelize: Sequelize) => {
     sequelize
       .authenticate()
       .then(() => {
-        console.log('Connection has been established successfully.');
+        console.log('[server] Connection has been established successfully.');
       })
       .catch((error) => {
-        console.error('Unable to connect to the database:', error);
+        console.error('[server] Unable to connect to the database:', error);
       });
   };
 };
@@ -19,10 +19,10 @@ const syncModelsInit = (sequelize: Sequelize) => {
     sequelize
       .sync({ force: true })
       .then(() => {
-        console.log('All models were synchronized successfully.');
+        console.log('[server] All models were synchronized successfully.');
       })
       .catch((err) => {
-        console.log('Unable to sync models:', err);
+        console.log('[server] Unable to sync models:', err);
       });
   };
 };
