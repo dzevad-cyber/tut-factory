@@ -28,6 +28,8 @@ services:
     env_file: .env.db.dev
     ports:
       - '3306:3306'
+    volumes:
+      - tut_factory_db_mysql:/var/lib/mysql
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost:3306']
       interval: 5s
@@ -36,4 +38,4 @@ services:
       start_period: 2s
 
 volumes:
-  mysql:
+  tut_factory_db_mysql:
