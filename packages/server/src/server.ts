@@ -4,7 +4,7 @@ import dbSetup from './app/mysql/db.setup';
 
 process.on('uncaughtException', (err: any) => {
   console.log('[server] UNCAUGHT EXCEPTION! 💥 Shutting down...');
-  console.error(`[server] ${err.name}, ${err.message}}`);
+  console.error(`[server] ${err.name}, ${err.message}`);
   console.error('[server] Full error:', err);
   process.exit(1);
 });
@@ -21,7 +21,7 @@ const server = app.listen(PORT, () => {
 
 process.on('unhandledRejection', (err: any) => {
   console.log('[server] UNHANDLED REJECTION! 💥 Shutting down...');
-  console.error(`[server] ${err.name}, ${err.message}}`);
+  console.error(`[server] ${err.name}, ${err.message}`);
   console.error('[server] Full error:', err);
   server.close(() => {
     process.exit(1);
