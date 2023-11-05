@@ -28,7 +28,7 @@
     "typescript": "^5.2.2"
   },
   "engines": {
-    "node": "20.x.x",
+    "node": "20.9.x",
     "yarn": "1.22.19"
   }
 }
