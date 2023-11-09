@@ -6,7 +6,6 @@ const User = sequelize.define(
   {
     first_name: {
       type: DataTypes.STRING,
-      allowNull: true,
       validate: {
         isAlpha: {
           msg: 'First name must only contain letters',
@@ -19,7 +18,6 @@ const User = sequelize.define(
     },
     last_name: {
       type: DataTypes.STRING,
-      allowNull: true,
       validate: {
         isAlpha: {
           msg: 'Last name name must only contain letters',
