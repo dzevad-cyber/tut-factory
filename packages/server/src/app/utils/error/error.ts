@@ -1,7 +1,7 @@
 class AppError extends Error {
   public readonly message: string;
   public readonly statusCode: number;
-  public readonly status: string;
+  public readonly status: AppErrorStatus;
   public readonly isOperational: boolean;
 
   constructor(message: string, statusCode: number) {
@@ -17,3 +17,8 @@ class AppError extends Error {
 }
 
 export default AppError;
+
+// success - if the request was successful
+// fail - if the request failed but you handled the error
+// error - if the request failed and you didn't handle the error
+export type AppErrorStatus = 'success' | 'fail' | 'error';
