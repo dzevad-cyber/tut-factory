@@ -1,8 +1,13 @@
 import { ErrorRequestHandler, Response } from 'express';
-import AppError from './error';
+import { handleSequelizeValidationError } from './sequelizeErrorHandlers/handleSequelizeValidationError';
+import { handleSequelizeUniqueConstraintError } from './sequelizeErrorHandlers/handleSequelizeUniqueConstraintError';
 
 const handleErrorsForDevTestEnv = (err: ErrorProps, res: Response) => {
-  if (err.isOperational) {
+  if (err.error?.name === 'SequelizeValidationError') {
+    handleSequelizeValidationError(err, res);
+  } else if (err.error?.name === 'SequelizeUniqueConstraintError') {
+    handleSequelizeUniqueConstraintError(err, res);
+  } else if (err.isOperational) {
     return res.status(err.statusCode).json({
       status: err.status,
       message: err.message,
@@ -57,6 +62,6 @@ type ErrorProps = {
   statusCode: number;
   message: string;
   stack: string;
-  error: AppError | Error;
+  error: any;
   isOperational?: boolean;
 };
