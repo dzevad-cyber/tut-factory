@@ -38,7 +38,7 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
 export default globalErrorHandler;
 
 type ErrorProps = {
-  status: 'fail';
+  status: 'fail' | 'error';
   statusCode: number;
   message: string;
   stack: string;
