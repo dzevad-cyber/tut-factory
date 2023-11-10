@@ -4,7 +4,7 @@ import { responseFail } from '../../reponses/reponses';
 export const handleSequelizeValidationError = (err: any, res: Response) => {
   const errors = getSequelizeValidationErrors(err);
 
-  responseFail(res, 400, { errors });
+  return responseFail(res, 400, { errors });
 };
 
 const getSequelizeValidationErrors = (err: any) => {
