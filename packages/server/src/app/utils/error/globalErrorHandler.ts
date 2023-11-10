@@ -22,16 +22,14 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
       status: errorProps.status,
       message: errorProps.message,
     });
+  } else if (['development', 'test'].includes(process.env.NODE_ENV as string)) {
+    return res.status(errorProps.statusCode).json(errorProps);
   } else {
-    if (['development', 'test'].includes(process.env.NODE_ENV as string)) {
-      return res.status(errorProps.statusCode).json(errorProps);
-    } else {
-      console.error('ERROR', errorProps.error); // use logger for this
-      return res.status(500).json({
-        status: 'error',
-        message: 'Something went wrong!!!',
-      });
-    }
+    console.error('ERROR', errorProps.error); // use logger for this
+    return res.status(500).json({
+      status: 'error',
+      message: 'Something went wrong!!!',
+    });
   }
 };
 
