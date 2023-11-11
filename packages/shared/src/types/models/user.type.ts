@@ -6,4 +6,5 @@ export type UserModelAttributes = {
   avatar: string;
   role: string;
   isEmailVerified: boolean;
+  confirmPassword: string;
 };
