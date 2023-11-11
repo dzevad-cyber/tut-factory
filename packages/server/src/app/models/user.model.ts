@@ -1,10 +1,12 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 import sequelize from '../mysql/db.create';
+import bcrypt from 'bcryptjs';
+import { UserModelAttributes } from '@shared/src/types';
 
-const User = sequelize.define(
+const User = sequelize.define<Model<UserModelAttributes>>(
   'User',
   {
-    first_name: {
+    firstName: {
       type: DataTypes.STRING,
       validate: {
         isAlpha: {
@@ -17,7 +19,7 @@ const User = sequelize.define(
       },
       allowNull: false,
     },
-    last_name: {
+    lastName: {
       type: DataTypes.STRING,
       validate: {
         isAlpha: {
@@ -71,16 +73,24 @@ const User = sequelize.define(
   },
   {
     defaultScope: {
-      attributes: { exclude: ['password', 'created_at', 'updated_at'] },
+      attributes: { exclude: ['password', 'createdAt', 'updatedAt'] },
     },
     scopes: {
       withTimestamps: {
-        include: ['created_at', 'updated_at'],
+        include: ['createdAt', 'updatedAt'],
+      },
+    },
+    hooks: {
+      beforeCreate: async (user) => {
+        const hashedPassword = await bcrypt.hash(
+          user.getDataValue('password'),
+          14
+        );
+
+        user.setDataValue('password', hashedPassword);
       },
     },
     timestamps: true,
-    createdAt: 'created_at',
-    updatedAt: 'updated_at',
     deletedAt: 'deleted_at',
   }
 );
