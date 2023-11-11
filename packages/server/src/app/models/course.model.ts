@@ -1,6 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../mysql/db.create';
-import type Course from '@shared/src/types/models/course.type';
+import type { Course } from '@shared/src/types';
 
 const Course = sequelize.define<Model<Course>>('Course', {
   // user_id foregin key

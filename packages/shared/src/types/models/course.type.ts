@@ -1,4 +1,4 @@
-type Course = {
+export type Course = {
   // course_id: number;
   // user_id: number;
   // category_id: number;
@@ -8,5 +8,3 @@ type Course = {
   price: number;
   isPublished: boolean;
 };
-
-export default Course;
