@@ -15,6 +15,7 @@ const User = sequelize.define(
           msg: 'First name must be between 2 and 30 characters',
         },
       },
+      allowNull: false,
     },
     last_name: {
       type: DataTypes.STRING,
@@ -27,6 +28,7 @@ const User = sequelize.define(
           msg: 'Last name must be between 2 and 30 characters',
         },
       },
+      defaultValue: null,
     },
     email: {
       type: DataTypes.STRING,
@@ -50,6 +52,7 @@ const User = sequelize.define(
     },
     avatar: {
       type: DataTypes.STRING,
+      defaultValue: null,
     },
     role: {
       type: DataTypes.STRING,
@@ -67,6 +70,14 @@ const User = sequelize.define(
     },
   },
   {
+    defaultScope: {
+      attributes: { exclude: ['password', 'created_at', 'updated_at'] },
+    },
+    scopes: {
+      withTimestamps: {
+        include: ['created_at', 'updated_at'],
+      },
+    },
     timestamps: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',

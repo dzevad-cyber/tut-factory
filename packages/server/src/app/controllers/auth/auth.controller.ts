@@ -3,7 +3,7 @@ import { catchAsync } from '../../utils/catchAsync';
 import { responseSuccess } from '../../utils/reponses/reponses';
 
 export const register = catchAsync(async (req, res, next) => {
-  const newUser = await User.create(req.body);
+  await User.create(req.body);
 
-  return responseSuccess(res, 201, newUser);
+  return responseSuccess(res, 201, { message: 'User created successfully' });
 });
