@@ -84,7 +84,7 @@ const User = sequelize.define<Model<UserModelAttributes>>(
       beforeCreate: async (user) => {
         const hashedPassword = await bcrypt.hash(
           user.getDataValue('password'),
-          14
+          12
         );
 
         user.setDataValue('password', hashedPassword);
