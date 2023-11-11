@@ -2,6 +2,7 @@ import { DataTypes, Model } from 'sequelize';
 import sequelize from '../mysql/db.create';
 import bcrypt from 'bcryptjs';
 import { UserModelAttributes } from '@shared/src/types';
+import AppError from '../utils/error/error';
 
 const User = sequelize.define<Model<UserModelAttributes>>(
   'User',
@@ -52,6 +53,16 @@ const User = sequelize.define<Model<UserModelAttributes>>(
         },
       },
     },
+    confirmPassword: {
+      type: DataTypes.VIRTUAL,
+      allowNull: false,
+      validate: {
+        len: {
+          args: [12, 30],
+          msg: 'Password must be between 12 and 30 characters',
+        },
+      },
+    },
     avatar: {
       type: DataTypes.STRING,
       defaultValue: null,
@@ -77,21 +88,44 @@ const User = sequelize.define<Model<UserModelAttributes>>(
     },
     scopes: {
       withTimestamps: {
-        include: ['createdAt', 'updatedAt'],
+        attributes: {
+          include: ['createdAt', 'updatedAt'],
+        },
+      },
+      withPassword: {
+        attributes: {
+          include: ['password'],
+        },
       },
     },
+
     hooks: {
       beforeCreate: async (user) => {
         const hashedPassword = await bcrypt.hash(
           user.getDataValue('password'),
-          14
+          12
+        );
+        const hashedConfirmPassword = await bcrypt.hash(
+          user.getDataValue('confirmPassword'),
+          12
         );
 
-        user.setDataValue('password', hashedPassword);
+        const confirmPassword = user.getDataValue('confirmPassword');
+
+        const passwordMatch = await bcrypt.compare(
+          confirmPassword,
+          hashedPassword
+        );
+
+        if (passwordMatch) {
+          user.setDataValue('password', hashedPassword);
+          user.setDataValue('confirmPassword', hashedConfirmPassword);
+        } else {
+          throw new AppError('Passwords do not match', 400);
+        }
       },
     },
     timestamps: true,
-    deletedAt: 'deleted_at',
   }
 );
 
