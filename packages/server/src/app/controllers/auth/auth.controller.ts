@@ -5,7 +5,6 @@ import { responseSuccess } from '../../utils/reponses/reponses';
 import jwt from 'jsonwebtoken';
 
 export const register = catchAsync(async (req, res, next) => {
-  // verfiy the data with zod ...
   const newUser = (
     await User.create(req.body, {
       fields: ['firstName', 'email', 'password', 'confirmPassword'],
