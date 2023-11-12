@@ -103,7 +103,6 @@ const User = sequelize.define<Model<UserModelAttributes>>(
         },
       },
     },
-
     hooks: {
       beforeCreate: async (user) => {
         const hashedPassword = await bcrypt.hash(
