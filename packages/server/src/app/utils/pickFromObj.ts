@@ -1,4 +1,7 @@
-export const pickFromObj = (keys: string[], obj: Record<string, any>) => {
+export const pickFromObj = (
+  keys: string[],
+  obj: Record<string, any>
+): Record<string, any> => {
   const result = keys.reduce((acc, currentValue) => {
     if (!obj[currentValue]) return acc;
 
