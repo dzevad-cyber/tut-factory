@@ -7,6 +7,11 @@ import AppError from '../utils/error/error';
 const User = sequelize.define<Model<UserModelAttributes>>(
   'User',
   {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     firstName: {
       type: DataTypes.STRING,
       validate: {
