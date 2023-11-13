@@ -5,7 +5,7 @@
     "paths": {
       "@client/*": ["packages/client/*"],
       "@server/*": ["packages/server/*"],
-      "@shared/*": ["packages/shared/*"]
+      "@shared/*": ["packages/shared/src/*"]
     },
     "noUnusedLocals": true
   },

@@ -1,7 +1,7 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../mysql/db.create';
 import bcrypt from 'bcryptjs';
-import { UserModelAttributes } from '@shared/src/types';
+import { UserModelAttributes } from '@shared/types/models/user.type';
 import AppError from '../utils/error/error';
 
 const User = sequelize.define<Model<UserModelAttributes>>(
