@@ -6,11 +6,15 @@ import { cn } from '@client/client-utils/tailwind/cn';
 import { Button } from '@client/components/ui/button';
 import { Card } from '@client/components/ui/card';
 import Logo from '@client/components/logo/Logo';
-import { FieldValues, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { registerFormSchema } from '@shared/forms/registerForm';
-import type { RegisterForm } from '@shared/forms/registerForm';
+import {
+  registerFormSchema,
+  type RegisterForm,
+} from '@shared/forms/registerForm';
 import { Loader2 } from 'lucide-react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import axios from 'axios';
 
 const RegisterPage = () => {
   const {
@@ -22,8 +26,19 @@ const RegisterPage = () => {
     resolver: zodResolver(registerFormSchema),
   });
 
-  const onSubmit = async (data: FieldValues) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+  const mutation = useMutation({
+    mutationFn: async (formData: RegisterForm) => {
+      const { data } = await axios.post(
+        'http://localhost:5000/api/v1/auth/register',
+        formData
+      );
+
+      console.log('[ page.tsx - 36 ] - data:', data);
+    },
+  });
+
+  const onSubmit = async (data: RegisterForm) => {
+    mutation.mutate(data);
 
     reset();
   };

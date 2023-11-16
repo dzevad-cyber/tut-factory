@@ -4,9 +4,11 @@ import AppError from './utils/error/error';
 import outputFormat from './utils/logger';
 import morgan from 'morgan';
 import { v1Router } from './api/v1/v1.routes';
+import cors from 'cors';
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(morgan(outputFormat));
 
