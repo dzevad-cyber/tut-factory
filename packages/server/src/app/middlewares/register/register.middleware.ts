@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { responseFail } from '../../utils/reponses/reponses';
 import { catchAsync } from '../../utils/catchAsync';
-import { registerFormSchema } from '../../../../../shared/src/forms/registerForm';
+import { registerFormSchema } from '../../../../../shared/src/forms/register-form/registerForm.schema';
 
 export const validateRegisterReqBody = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {

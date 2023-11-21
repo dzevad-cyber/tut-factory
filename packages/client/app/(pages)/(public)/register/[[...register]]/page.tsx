@@ -8,39 +8,34 @@ import { Card } from '@client/components/ui/card';
 import Logo from '@client/components/logo/Logo';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  registerFormSchema,
-  type RegisterForm,
-} from '@shared/forms/registerForm';
+import { registerFormSchema } from '@shared/forms/register-form/registerForm.schema';
+import { setFormErrors } from '@shared/forms/register-form/registerForm.helpers';
+import { RegisterForm } from '@shared/forms/register-form/registerForm.types';
 import { Loader2 } from 'lucide-react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import axios from 'axios';
+import { useRegister } from '@client/api/auth/register';
 
 const RegisterPage = () => {
   const {
-    register,
+    register: registerHookForm,
     handleSubmit,
     reset,
+    setError,
     formState: { errors, isSubmitting },
   } = useForm<RegisterForm>({
     resolver: zodResolver(registerFormSchema),
   });
 
-  const mutation = useMutation({
-    mutationFn: async (formData: RegisterForm) => {
-      const { data } = await axios.post(
-        'http://localhost:5000/api/v1/auth/register',
-        formData
-      );
+  const { error, mutate: register } = useRegister();
 
-      console.log('[ page.tsx - 36 ] - data:', data);
-    },
-  });
+  const onSubmit = async (formData: RegisterForm) => {
+    await register(formData);
 
-  const onSubmit = async (data: RegisterForm) => {
-    mutation.mutate(data);
-
-    reset();
+    if (error) {
+      const { errors } = error.response?.data?.result;
+      setFormErrors(errors as Record<string, any>, setError);
+    } else {
+      reset();
+    }
   };
 
   return (
@@ -56,7 +51,7 @@ const RegisterPage = () => {
           <div>
             <Label>First name</Label>
             <Input
-              {...register('firstName')}
+              {...registerHookForm('firstName')}
               type='text'
               placeholder='First name'
             />
@@ -66,7 +61,11 @@ const RegisterPage = () => {
           </div>
           <div>
             <Label>Email</Label>
-            <Input {...register('email')} type='email' placeholder='Email' />
+            <Input
+              {...registerHookForm('email')}
+              type='email'
+              placeholder='Email'
+            />
             {errors.email && (
               <div className='text-xsm pt-1 text-red-400'>{`${errors.email.message}`}</div>
             )}
@@ -74,7 +73,7 @@ const RegisterPage = () => {
           <div>
             <Label>Password</Label>
             <Input
-              {...register('password')}
+              {...registerHookForm('password')}
               // type='password'
               placeholder='Password'
             />
@@ -85,7 +84,7 @@ const RegisterPage = () => {
           <div>
             <Label>Confirm password</Label>
             <Input
-              {...register('confirmPassword')}
+              {...registerHookForm('confirmPassword')}
               // type='password'
               placeholder='Confirm Password'
             />

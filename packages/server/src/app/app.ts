@@ -3,8 +3,8 @@ import globalErrorHandler from './utils/error/globalErrorHandler';
 import AppError from './utils/error/error';
 import outputFormat from './utils/logger';
 import morgan from 'morgan';
-import { v1Router } from './api/v1/v1.routes';
 import cors from 'cors';
+import { v1Router } from './api/v1/v1.routes';
 
 const app = express();
 

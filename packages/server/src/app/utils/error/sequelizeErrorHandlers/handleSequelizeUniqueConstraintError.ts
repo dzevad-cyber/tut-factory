@@ -1,8 +1,10 @@
 import { Response } from 'express';
 import { responseFail } from '../../reponses/reponses';
+import { ErrorProps } from '../error.types';
+import { extractSequelizeErrors } from '../error.helpers';
 
 export const handleSequelizeUniqueConstraintError = (
-  err: any,
+  err: ErrorProps,
   res: Response
 ): void => {
   const errors = getSequelizeUniqueConstraintErrors(err);
@@ -10,16 +12,7 @@ export const handleSequelizeUniqueConstraintError = (
   responseFail(res, 400, { errors });
 };
 
-const getSequelizeUniqueConstraintErrors = (err: any) => {
-  const errors = err.error?.errors.reduce(
-    (acc: Record<string, string>, val: Record<string, any>) => {
-      return {
-        ...acc,
-        [val.path]: val.message,
-      };
-    },
-    {}
-  );
-
+const getSequelizeUniqueConstraintErrors = (err: ErrorProps) => {
+  const errors = extractSequelizeErrors(err.error?.errors);
   return errors;
 };
