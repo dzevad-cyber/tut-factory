@@ -2,6 +2,7 @@ import { ErrorRequestHandler } from 'express';
 import { handleSequelizeValidationError } from './sequelizeErrorHandlers/handleSequelizeValidationError';
 import { handleSequelizeUniqueConstraintError } from './sequelizeErrorHandlers/handleSequelizeUniqueConstraintError';
 import { responseFail } from '../reponses/reponses';
+import { ErrorProps } from './error.types';
 
 const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
   const errorProps: ErrorProps = {
@@ -34,12 +35,3 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
 };
 
 export default globalErrorHandler;
-
-type ErrorProps = {
-  status: 'fail' | 'error';
-  statusCode: number;
-  message: string;
-  stack: string;
-  error: any;
-  isOperational?: boolean;
-};
