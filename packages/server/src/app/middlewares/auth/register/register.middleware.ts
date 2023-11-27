@@ -1,11 +1,16 @@
 import { NextFunction, Request, Response } from 'express';
-import { responseFail } from '../../utils/reponses/reponses';
-import { catchAsync } from '../../utils/catchAsync';
-import { registerFormSchema } from '../../../../../shared/src/forms/register-form/registerForm.schema';
+import { responseFail } from '../../../utils/reponses/reponses';
+import { catchAsync } from '../../../utils/catchAsync';
+import { registerFormSchema } from '../../../../../../shared/src/forms/register-form/registerForm.schema';
 
 export const validateRegisterReqBody = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const reqBodySchemaParsed = registerFormSchema.safeParse(req.body);
+
+    console.log(
+      '[ register.middleware.ts - 10 ] - reqBodySchemaParsed:',
+      reqBodySchemaParsed
+    );
 
     if (!reqBodySchemaParsed.success) {
       const errors = reqBodySchemaParsed.error.issues.reduce((acc, curr) => {
@@ -17,6 +22,7 @@ export const validateRegisterReqBody = catchAsync(
 
       return responseFail(res, 400, errors);
     } else {
+      req.body = reqBodySchemaParsed.data;
       next();
     }
   }
