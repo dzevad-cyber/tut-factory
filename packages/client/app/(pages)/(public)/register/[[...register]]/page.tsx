@@ -75,7 +75,7 @@ const RegisterPage = () => {
             <Label>Password</Label>
             <Input
               {...registerHookForm('password')}
-              // type='password'
+              type='password'
               placeholder='Password'
             />
             {errors.password && (
@@ -86,7 +86,7 @@ const RegisterPage = () => {
             <Label>Confirm password</Label>
             <Input
               {...registerHookForm('confirmPassword')}
-              // type='password'
+              type='password'
               placeholder='Confirm Password'
             />
             {errors.confirmPassword && (
