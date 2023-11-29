@@ -19,7 +19,7 @@ export const register = catchAsync(async (req, res, next) => {
 
   const filteredNewUser = pickFromObj(['firstName', 'email'], newUser);
 
-  res.cookie('jwt', token, {
+  res.cookie('__auth_tf__', token, {
     expires: new Date(
       Date.now() +
         Number(process.env.JWT_COOKIE_EXPIRES_IN!) * 24 * 60 * 60 * 1000
