@@ -10,20 +10,31 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
     status: err.status || 'error',
     message: err.message,
     stack: err.stack,
-    error: err,
+    error: {
+      ...err,
+    },
     isOperational: err.isOperational,
   };
+  console.log('test');
 
-  if (errorProps.error?.name === 'SequelizeValidationError') {
+  if (errorProps.error?.name === 'JsonWebTokenError') {
+    return responseFail(res, 401, {
+      message: 'Please log in or create an account.',
+    });
+  } else if (errorProps.error?.name === 'TokenExpiredError') {
+    return responseFail(res, 401, {
+      message: 'Your session has expired. Please log in.',
+    });
+  } else if (errorProps.error?.name === 'SequelizeValidationError') {
     return handleSequelizeValidationError(errorProps, res);
   } else if (errorProps.error?.name === 'SequelizeUniqueConstraintError') {
     return handleSequelizeUniqueConstraintError(errorProps, res);
   } else if (errorProps.isOperational) {
     return responseFail(res, errorProps.statusCode, {
-      status: errorProps.status,
       message: errorProps.message,
     });
-  } else if (['development', 'test'].includes(process.env.NODE_ENV as string)) {
+  } else if (['development', 'test'].includes(process.env.NODE_ENV!)) {
+    console.log('[ server ]:', errorProps);
     return res.status(errorProps.statusCode).json(errorProps);
   } else {
     console.error('ERROR', errorProps.error); // use logger for this

@@ -3,9 +3,10 @@ export type UserModelAttributes = {
   email: string;
   password: string;
   confirmPassword: string;
-  id?: number;
+  id: number;
   lastName?: string;
   avatar?: string;
   role?: string;
   isEmailVerified?: boolean;
+  changedPasswordAt?: Date;
 };

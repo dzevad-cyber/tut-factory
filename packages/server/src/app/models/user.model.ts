@@ -86,6 +86,10 @@ const User = sequelize.define<Model<UserModelAttributes>>(
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    changedPasswordAt: {
+      type: 'TIMESTAMP',
+      allowNull: true,
+    },
   },
   {
     defaultScope: {
