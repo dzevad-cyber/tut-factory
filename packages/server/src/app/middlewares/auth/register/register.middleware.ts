@@ -7,11 +7,6 @@ export const validateRegisterReqBody = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const reqBodySchemaParsed = registerFormSchema.safeParse(req.body);
 
-    console.log(
-      '[ register.middleware.ts - 10 ] - reqBodySchemaParsed:',
-      reqBodySchemaParsed
-    );
-
     if (!reqBodySchemaParsed.success) {
       const errors = reqBodySchemaParsed.error.issues.reduce((acc, curr) => {
         return {

@@ -1,5 +1,14 @@
 import axios from 'axios';
 
-export default axios.create({
+const clientHttp = axios.create({
   baseURL: 'http://localhost:5000/api',
 });
+
+clientHttp.interceptors.response.use((res) => {
+  console.log('[ clientHttp.ts - 11 ] - response:', res);
+
+  
+  return res;
+});
+
+export default clientHttp;

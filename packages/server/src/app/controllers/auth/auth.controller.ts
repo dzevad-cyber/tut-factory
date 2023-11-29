@@ -19,6 +19,15 @@ export const register = catchAsync(async (req, res, next) => {
 
   const filteredNewUser = pickFromObj(['firstName', 'email'], newUser);
 
+  res.cookie('jwt', token, {
+    expires: new Date(
+      Date.now() +
+        Number(process.env.JWT_COOKIE_EXPIRES_IN!) * 24 * 60 * 60 * 1000
+    ),
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+  });
+
   return responseSuccess(res, 201, {
     newUser: filteredNewUser,
     token,
