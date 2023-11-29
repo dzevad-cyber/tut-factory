@@ -20,22 +20,23 @@ const RegisterPage = () => {
     handleSubmit,
     reset,
     setError,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<RegisterForm>({
     resolver: zodResolver(registerFormSchema),
   });
 
-  const { error, mutate: register } = useRegister();
+  const { mutate: register, isError, isSuccess, isPending } = useRegister();
 
-  const onSubmit = async (formData: RegisterForm) => {
-    await register(formData);
-
-    if (error) {
-      const { errors } = error.response?.data?.result;
-      setFormErrors(errors as Record<string, any>, setError);
-    } else {
-      reset();
-    }
+  const onSubmit = (formData: RegisterForm) => {
+    register(formData, {
+      onError: (error) => {
+        const { errors } = error.response?.data?.result;
+        setFormErrors(errors as Record<string, any>, setError);
+      },
+      onSuccess: (data) => {
+        reset();
+      },
+    });
   };
 
   return (
@@ -93,8 +94,8 @@ const RegisterPage = () => {
             )}
           </div>
 
-          <Button disabled={isSubmitting} type='submit'>
-            {isSubmitting ? (
+          <Button disabled={isPending} type='submit'>
+            {isPending ? (
               <Loader2 stroke='#000000' className='h-6 w-6 animate-spin' />
             ) : (
               'Register'
