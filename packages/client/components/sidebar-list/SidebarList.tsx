@@ -1,18 +1,45 @@
 'use client';
 
-import pagesRoutes from '@client/client-utils/page-routes/pagesRoutes';
+// import pagesRoutes from '@client/client-utils/page-routes/pagesRoutes';
 import { cn } from '@client/client-utils/tailwind/cn';
 import { Button } from '@client/components/ui/button';
 import { BarChart, Compass, Layout, List, LucideIcon } from 'lucide-react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+// import { usePathname } from 'next/navigation';
 
 const SidebarList = () => {
-  const { routes } = useSidebarRoutes();
+  // const { routes } = useSidebarRoutes();
+
+  const routes = [
+    {
+      icon: Layout,
+      label: 'Dashboard',
+      href: '/dashboard',
+      selected: true,
+    },
+    {
+      icon: List,
+      label: 'List',
+      href: '/dashboard/list',
+      selected: false,
+    },
+    {
+      icon: Compass,
+      label: 'Map',
+      href: '/dashboard/map',
+      selected: false,
+    },
+    {
+      icon: BarChart,
+      label: 'Analytics',
+      href: '/dashboard/analytics',
+      selected: false,
+    },
+  ];
 
   return (
     <ul className={cn('grid', 'text-sm', 'auto-rows-min')}>
-      {routes.map(({ icon: Icon, label, href, selected }) => {
+      {/* {routes.map(({ icon: Icon, label, href, selected }) => {
         return (
           <SidebarItem
             key={label}
@@ -22,7 +49,7 @@ const SidebarList = () => {
             selected={selected}
           />
         );
-      })}
+      })} */}
     </ul>
   );
 };
@@ -70,70 +97,39 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   );
 };
 
-const useSidebarRoutes = () => {
-  const pathName = usePathname();
+// const useSidebarRoutes = () => {
+//   const pathName = usePathname();
 
-  const sidebarRoutesGroupKey = Object.keys(sidebarItems).find((key) => {
-    return pathName.includes(key);
-  });
+//   const sidebarRoutesGroupKey = Object.keys(sidebarItems).find((key) => {
+//     return pathName.includes(key);
+//   });
 
-  if (!sidebarRoutesGroupKey)
-    return {
-      routes: [],
-    };
+//   if (!sidebarRoutesGroupKey)
+//     return {
+//       routes: [],
+//     };
 
-  const sidebarRoutesGroup =
-    sidebarItems[sidebarRoutesGroupKey as keyof typeof sidebarItems];
+//   const sidebarRoutesGroup =
+//     sidebarItems[sidebarRoutesGroupKey as keyof typeof sidebarItems];
 
-  const routes = sidebarRoutesGroup.map((item) => {
-    if (item.href === pathName) {
-      return {
-        ...item,
-        selected: true,
-      };
-    } else {
-      return {
-        ...item,
-        selected: false,
-      };
-    }
-  });
+//   const routes = sidebarRoutesGroup.map((item) => {
+//     if (item.href === pathName) {
+//       return {
+//         ...item,
+//         selected: true,
+//       };
+//     } else {
+//       return {
+//         ...item,
+//         selected: false,
+//       };
+//     }
+//   });
 
-  return {
-    routes,
-  };
-};
-
-const sidebarItems = {
-  [pagesRoutes.dashboard.path]: [
-    {
-      icon: Layout,
-      label: 'Dashboard',
-      href: pagesRoutes.dashboard.path,
-      selected: true,
-    },
-    {
-      icon: Compass,
-      label: 'Browse',
-      href: pagesRoutes.browse.path,
-      selected: false,
-    },
-  ],
-  '/teacher': [
-    {
-      icon: List,
-      label: 'Courses',
-      href: '/teacher/courses',
-      selected: true,
-    },
-    {
-      icon: BarChart,
-      label: 'Analytics',
-      href: '/teacher/analytics',
-      selected: false,
-    },
-  ],
-};
+//   return {
+//     routes,
+//   };
+// };
 
 type SidebarItemProps = {
   icon: LucideIcon;
