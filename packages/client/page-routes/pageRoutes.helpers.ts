@@ -1,5 +1,5 @@
-import { pageRoutes } from './pageRoutes';
+import { type ProtectedRoutes, protectedRoutes } from './pageRoutes';
 
-export const isProtectedRoute = (route: string) => {
-  return Object.values(pageRoutes.protected).includes(route);
+export const isProtectedRoute = (urlPath: string) => {
+  return protectedRoutes.includes(urlPath as ProtectedRoutes);
 };

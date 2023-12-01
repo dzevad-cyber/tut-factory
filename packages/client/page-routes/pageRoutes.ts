@@ -1,20 +1,15 @@
-export const pageRoutes = {
-  protected: {
-    '/dashboard': '/dashboard',
-    '/dashboard/browser': '/dashboard/browser',
-    '/dashboard/teacher': '/dashboard/teacher',
-    '/dashboard/teacher/create': '/dashboard/teacher/create',
-  },
-  public: {
-    '/register': '/register',
-    '/login': '/login',
-  },
-};
+export const protectedRoutes = [
+  '/dashboard',
+  '/dashboard/browse',
+  '/dashboard/teacher',
+  '/dashboard/teacher/create',
+] as const;
 
-export type PageRoutes = typeof pageRoutes;
+export const publicRoutes = ['/register', '/login'] as const;
 
-export type PublicRoutes = typeof pageRoutes.public;
-export type PublicRoutesKeys = keyof typeof pageRoutes.public;
+export const clientRoutes = [...protectedRoutes, ...publicRoutes] as const;
 
-export type ProtecedRoutes = typeof pageRoutes.protected;
-export type ProtectedRoutesKeys = keyof typeof pageRoutes.protected;
+export type ProtectedRoutes = (typeof protectedRoutes)[number];
+export type PublicRoutes = (typeof publicRoutes)[number];
+
+export type ClientRoutes = ProtectedRoutes | PublicRoutes;
