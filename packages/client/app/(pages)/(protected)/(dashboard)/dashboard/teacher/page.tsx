@@ -1,12 +1,9 @@
-import { Button } from '@client/components/ui/button';
-import Link from 'next/link';
+import NavLink from '@client/components/client-link/NavLink';
 
 const TeacherCourses = () => {
   return (
     <div>
-      <Button size='lg'>
-        <Link href='/dashboard/teacher/create'>Create New Course</Link>
-      </Button>
+      <NavLink href='/dashboard/teacher/create'>Create New Course</NavLink>
     </div>
   );
 };
