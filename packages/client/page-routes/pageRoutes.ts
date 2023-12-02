@@ -1,6 +1,7 @@
 export const protectedRoutes = [
   '/dashboard',
   '/dashboard/browse',
+  '/dashboard/analytics',
   '/dashboard/teacher',
   '/dashboard/teacher/create',
 ] as const;

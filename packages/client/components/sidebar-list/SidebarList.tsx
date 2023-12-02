@@ -1,55 +1,40 @@
 'use client';
 
-// import pagesRoutes from '@client/client-utils/page-routes/pagesRoutes';
 import { cn } from '@client/client-utils/tailwind/cn';
 import { Button } from '@client/components/ui/button';
 import { BarChart, Compass, Layout, List, LucideIcon } from 'lucide-react';
 import Link from 'next/link';
-// import { usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 const SidebarList = () => {
-  // const { routes } = useSidebarRoutes();
-
-  const routes = [
-    {
-      icon: Layout,
-      label: 'Dashboard',
-      href: '/dashboard',
-      selected: true,
-    },
-    {
-      icon: List,
-      label: 'List',
-      href: '/dashboard/list',
-      selected: false,
-    },
-    {
-      icon: Compass,
-      label: 'Map',
-      href: '/dashboard/map',
-      selected: false,
-    },
-    {
-      icon: BarChart,
-      label: 'Analytics',
-      href: '/dashboard/analytics',
-      selected: false,
-    },
-  ];
+  const pathname = usePathname();
 
   return (
     <ul className={cn('grid', 'text-sm', 'auto-rows-min')}>
-      {/* {routes.map(({ icon: Icon, label, href, selected }) => {
-        return (
-          <SidebarItem
-            key={label}
-            icon={Icon}
-            label={label}
-            href={href}
-            selected={selected}
-          />
-        );
-      })} */}
+      <SidebarItem
+        icon={Layout}
+        label='Dashboard'
+        href='/dashboard'
+        selected={pathname === '/dashboard'}
+      />
+      <SidebarItem
+        icon={List}
+        label='Browse'
+        href='/dashboard/browse'
+        selected={pathname === '/dashboard/browse'}
+      />
+      <SidebarItem
+        icon={Compass}
+        label='Teacher'
+        href='/dashboard/teacher'
+        selected={pathname === '/dashboard/teacher'}
+      />
+      <SidebarItem
+        icon={BarChart}
+        label='Analytics'
+        href='/dashboard/analytics'
+        selected={pathname === '/dashboard/analytics'}
+      />
     </ul>
   );
 };
@@ -96,40 +81,6 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
     </li>
   );
 };
-
-// const useSidebarRoutes = () => {
-//   const pathName = usePathname();
-
-//   const sidebarRoutesGroupKey = Object.keys(sidebarItems).find((key) => {
-//     return pathName.includes(key);
-//   });
-
-//   if (!sidebarRoutesGroupKey)
-//     return {
-//       routes: [],
-//     };
-
-//   const sidebarRoutesGroup =
-//     sidebarItems[sidebarRoutesGroupKey as keyof typeof sidebarItems];
-
-//   const routes = sidebarRoutesGroup.map((item) => {
-//     if (item.href === pathName) {
-//       return {
-//         ...item,
-//         selected: true,
-//       };
-//     } else {
-//       return {
-//         ...item,
-//         selected: false,
-//       };
-//     }
-//   });
-
-//   return {
-//     routes,
-//   };
-// };
 
 type SidebarItemProps = {
   icon: LucideIcon;
