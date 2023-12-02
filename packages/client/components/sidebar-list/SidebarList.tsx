@@ -5,6 +5,8 @@ import { Button } from '@client/components/ui/button';
 import { BarChart, Compass, Layout, List, LucideIcon } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import NavLink from '../client-link/NavLink';
+import { ClientRoutes } from '@client/page-routes/pageRoutes';
 
 const SidebarList = () => {
   const pathname = usePathname();
@@ -47,7 +49,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
 }) => {
   return (
     <li>
-      <Button
+      <NavLink
         className={cn(
           'grid',
           'grid-cols-[min-content_min-content_1fr]',
@@ -59,25 +61,24 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
           'pl-10',
           'h-16'
         )}
+        href={href as ClientRoutes}
         variant='ghost'
         asChild
       >
-        <Link href={href}>
-          <Icon size={14} />
-          {label}
-          {selected ? (
-            <span
-              className={cn(
-                'min-h-full',
-                'w-2',
-                'self-end',
-                'justify-self-end',
-                'bg-primary'
-              )}
-            />
-          ) : null}
-        </Link>
-      </Button>
+        <Icon size={14} />
+        {label}
+        {selected ? (
+          <span
+            className={cn(
+              'min-h-full',
+              'w-2',
+              'self-end',
+              'justify-self-end',
+              'bg-primary'
+            )}
+          />
+        ) : null}
+      </NavLink>
     </li>
   );
 };

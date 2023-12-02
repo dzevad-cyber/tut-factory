@@ -1,10 +1,11 @@
-import { Button } from '@client/components/ui/button';
+import { Button, buttonVariants } from '@client/components/ui/button';
 import { ClientRoutes } from '@client/page-routes/pageRoutes';
+import { VariantProps } from 'class-variance-authority';
 import Link from 'next/link';
 
-const NavLink: React.FC<NavLinkProps> = ({ href, children }) => {
+const NavLink: React.FC<NavLinkProps> = ({ children, href, ...props }) => {
   return (
-    <Button size='lg'>
+    <Button {...props}>
       <Link href={href as unknown as string}>{children}</Link>
     </Button>
   );
@@ -12,7 +13,8 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children }) => {
 
 export default NavLink;
 
-type NavLinkProps = {
-  href: ClientRoutes;
-  children: React.ReactNode;
-};
+type NavLinkProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof buttonVariants> & {
+    href: ClientRoutes;
+    asChild?: boolean;
+  };
