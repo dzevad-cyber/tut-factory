@@ -1,9 +1,7 @@
 'use client';
 
 import { cn } from '@client/client-utils/tailwind/cn';
-import { Button } from '@client/components/ui/button';
 import { BarChart, Compass, Layout, List, LucideIcon } from 'lucide-react';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import NavLink from '../client-link/NavLink';
 import { ClientRoutes } from '@client/page-routes/pageRoutes';
