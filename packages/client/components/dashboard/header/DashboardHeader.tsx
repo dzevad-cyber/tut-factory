@@ -1,12 +1,11 @@
 import { Sheet, SheetContent, SheetTrigger } from '@client/components/ui/sheet';
 import { Menu } from 'lucide-react';
 import { cn } from '@client/client-utils/tailwind/cn';
-import TeacherModeButton from '@client/components/teacher-mode-button/TeacherModeButton';
 import DashboardSidebar from '../sidebar/DashboardSidebar';
 
 const DashboardHeader = () => {
   return (
-    <div
+    <header
       className={cn(
         'grid grid-flow-col',
         'md:col-start-2',
@@ -16,7 +15,7 @@ const DashboardHeader = () => {
         'px-10'
       )}
     >
-      <div className={cn('grid', 'md:hidden')}>
+      <section className={cn('grid', 'md:hidden')}>
         <Sheet>
           <SheetTrigger>
             <Menu />
@@ -25,7 +24,7 @@ const DashboardHeader = () => {
             <DashboardSidebar />
           </SheetContent>
         </Sheet>
-      </div>
+      </section>
       <div
         className={cn(
           'grid',
@@ -34,10 +33,8 @@ const DashboardHeader = () => {
           'items-center',
           'gap-x-5'
         )}
-      >
-        <TeacherModeButton />
-      </div>
-    </div>
+      ></div>
+    </header>
   );
 };
 
