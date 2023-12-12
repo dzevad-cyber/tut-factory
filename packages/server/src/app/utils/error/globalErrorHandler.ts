@@ -15,7 +15,6 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
     },
     isOperational: err.isOperational,
   };
-  console.log('test');
 
   if (errorProps.error?.name === 'JsonWebTokenError') {
     return responseFail(res, 401, {
