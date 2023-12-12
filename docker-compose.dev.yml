@@ -8,7 +8,9 @@ services:
       dockerfile: ./Dockerfile.dev
     volumes:
       - .:/usr/tut-factory
-    env_file: .env.db.dev
+    env_file:
+      - .env.dev
+      - .env.db.dev
     environment:
       NODE_ENV: development
     ports:
